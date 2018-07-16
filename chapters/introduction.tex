@@ -1,4 +1,38 @@
 \chapter{Introduction}
 \label{cha:Introduction}
 
-test text
+\section{Motivation}
+% The number of credentials a typical user nowadays has to deal with - including the web, smartphones, encrypted storage, et cetera - is constantly increasing. Additionally, to the vast number of credentials rises the significance of mentioned credentials in consideration of our daily use of important systems and services. While the common login authentication procedure with credentials only was acceptable, today it is not advisable anymore. Despite the rise of significance, was a change to an enhanced authentication system not observed.
+
+% The thesis aims to give an overview of the functionality and advantages of an improved authentication through “second-factor authentication”. A demonstration is made using a daemon with an open interface for Bluetooth proximity detection and sample clients utilizing the interface to extend an already existing login scheme.
+[TODO Motivation]
+
+\section{Goals}
+
+[TODO Motivation]
+
+% The goal of this thesis is to describe the theoretical aspects of second-factor authentication, as well as its advantages and the increase of security by its usage. The theoretical background will be revisited and applied in the practical part, which is an implementation of a daemon that offers Bluetooth proximity detection. The daemon provides an open interface for 3rd-party applications to extend an authentication scheme to transform it into a twofactor authentication. Besides the daemon implementation, there are three clients provided. One client should be a Mozilla Firefox extension, which uses the daemon proximity detection in combination with the credential storage master password. The second client is a Linux PAM module, which increases the authentication security of the operation system’s login scheme. The third client is a Windows Desktop application that automatically locks
+
+The final result of this thesis should cover the theoretical aspects and required technologies for ``Pedestrian warning system'', as well as provide a working prototype of said system.
+
+% The final result of the thesis should cover the aspects of Two-factor authentication, as well as provide a daemon and the three mentioned sample clients, which are using the interface of the daemon in order to establish a second-factor authentication.
+
+\section{Structure}
+
+Chapter 2 provides the necessary technical background information and terminology disambiguation of the used and presented technologies. Chapter 3 presents the literature review of already existing and novel methods for the aimed system. Following, the chapter 4 shows the concept of the ``Pedestrian warning system'' prototype as well gives an insight of the used hardware, specifically the Kapsch EVK-3300. Chapter 5 introduces the technical details of implementation, such as the general approach and implementation architecture, subsequently followed by an in-depth overview of the pedestrian and roadside unit entities.
+Chapter number 6 provides an summary and future outlook for the implemented prototype.
+
+% - Technical background
+% - Related Work
+% - Concept
+% - Implementation
+% (- Evaluation)
+% - Conclusion
+
+% The next chapter Related Work presents the most common authentication solutions as a second factor such as the verification with physical devices, hardware and software token as well as the proximity authentication. It discusses the general and specific approach of the different verification techniques and demonstrates their typical operating place.
+
+% The Implementation chapter introduces the technical details such as the general approach and implementation architecture, subsequently followed by an in-depth overview of the components by the daemon and each implemented client.
+
+% Following this, the Results chapter analyses the overall results, as well as for the daemon and each implementation specifically the security enhancements using Bluetooth proximity.
+
+% A discussion will be presented in chapter 5, reflecting different views and aspects of the thesis while comparing it with other novel or existing solutions. The Conclusion chapter gives a summary and future outlook of Bluetooth Proximity as a second-factor authentication, followed by a Manual which explains the usage of the accompanying and created tools of this thesis.
