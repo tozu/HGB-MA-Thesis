@@ -2,37 +2,133 @@
 \label{cha:Introduction}
 
 \section{Motivation}
-% The number of credentials a typical user nowadays has to deal with - including the web, smartphones, encrypted storage, et cetera - is constantly increasing. Additionally, to the vast number of credentials rises the significance of mentioned credentials in consideration of our daily use of important systems and services. While the common login authentication procedure with credentials only was acceptable, today it is not advisable anymore. Despite the rise of significance, was a change to an enhanced authentication system not observed.
+Vehicular transportation is an integral part of our everyday lives. Since the invention of the automobile in [x], vehicles aid people by covering (far) distances in a quick timely manner, while offering the availability to transport goods as well. Due to the versatility and increasing affordability of vehicles, the road infrastructure made available becomes increasingly busy, unclear and insecure - for all its participants. This phenomena is especially visible, but not limited to, urban areas. Roads are not exclusively in use by vehicles, but shared with other traffic participants such as pedestrians, cyclists, etc. Even with already existing controlling prerequisites, like traffic rules, signs and lights, a certain danger still persists. Traffic participants hidden from view, inattentive or distracted cause an endangerment for others and themselves. 
 
-% The thesis aims to give an overview of the functionality and advantages of an improved authentication through “second-factor authentication”. A demonstration is made using a daemon with an open interface for Bluetooth proximity detection and sample clients utilizing the interface to extend an already existing login scheme.
-[TODO Motivation]
+Participants most risk are pedestrians
+% https://www.ncbi.nlm.nih.gov/pubmed/26547018
+as they have the least accident protection compared to the safety measures in vehicles.
+% statistics on accidents, share of pedestrian and cyclists
+According to the European Commission Report ''Road Safety in the European Union'' 21\% of people killed on roads are pedestrians. The report points out that particularly urban areas expose the most danger towards vulnerable road users \cite{EURoadSafetyReport2017}.
+Further, the World Health Organization (WHO) states that road traffic injuries are currently estimated to be the ninth leading cause of death globally and predicts to become the seventh leading cause by 2030 \cite{WHOGlobalReportRoadSafety}.
+
+% idea why 
+In order to decrease this inflicted endangerment towards pedestrians by vehicles sharing the road and increase their safety this thesis' aim is to introduce a ``Pedestrian warning system''. The systems goal is to notify vehicles about pedestrians in the proximate area who could be a potential endangerment. Having this information would then allow for imminent correction of maneuvering, routing and acceleration to circumvent collisions.
+
+% prospect to the future; more cars as well as more pedestrians
+A system like this needed as it is expected that the number of vehicles, traffic participants on roads increases even more \cite{}, but also as it is the foundation and requirement for autonomous driving in the future.  Having such a system in place is additionally beneficial since it aids the public's peace of mind and helps overcome possible trust issues towards the trend of autonomous vehicles.
+
+The applied technology in the proposed ``Pedestrian Warning System'' is vehicle-to-everything (V2X) communication, which is the passing of information from a vehicle to any entity that may affect the vehicle, and vice versa. Such entities include, but are not limited to vehicles, infrastructure and pedestrians. V2X is already incorporated in newer vehicles of the upper mid range to luxury price range.
+A pledge has also been made by the most important automobile manufacturers (Audi, Daimler, Ford, etc.)
+% src = https://blog.nxp.com/automotive/v2x-is-ready-to-go; https://www.car-2-car.org/fileadmin/downloads/PDFs/170815_C2C_General_Flyer_Screen.pdf
+to equip every new car with V2X technology from 2020.
+% -- The technology is already applied in form of vehicle-to-vehicle (V2V) communication by
+Vehicles that already have V2X implemented are the 
+% V2X is already used in newer cars by:
+% - Audi
+%    https://www.auto-talks.com/audi-autotalks-completed-integration-v2x-applications-small-form-factor-roof-antenna/
+Mercedes-Benz E-Class
+% - src: https://www.daimler.com/products/specials/new-e-class/car-to-x.html
+as well as the Audi A4 and Audi Q7 (with Audi Connect) \cite{}.
+% - src: https://www.audi-mediacenter.com/en/connectivity-techday-6597/swarm-intelligencecar-to-x-6602
+% - src: https://www.audi.com/en/company/sustainability/intelligence-connectivity.html
+Further, numerous field tests have been successfully completed on closed and open roads with various vehicles by different automobile manufacturers \cite{}.
+
+% -- explain advantages using V2X compared to traditional technologies
+V2X technology is favorable compared to common LIDAR\footnote{LIDAR - acronym for \textit{light detection and ranging}} and RADAR\footnote{RADAR - acronym for \textit{radio detection and ranging}} remote sensing for hazardous obstacle, i.e. pedestrians, since V2X sensors have greater range, through-object and around-corner viewing capabilities as they are not limited to direct line-of-sight.
+By utilizing V2X information exchange abilities it is not only increases road safety and mobility for every V2X equipped traffic participant but also improves traffic flow.
+
+% -- explain other advantages
+
+% An appropriate illustration of V2I technology is Audi's Traffic Light Information (TLI). Recently launched in the pilot city of Las Vegas, TLI is a slick bit of 4G LTE technology that, in properly equipped Audi models, provides a countdown until the next traffic light turns from red to green. In cars driven by humans, TLI reduces anxiety when stopped at a traffic light, as well as allows drivers to adjust their speed when approaching a red light to avoid coming to a complete stop.
+% src: https://www.autotrader.com/car-shopping/self-driving-cars-what-v2x-technology-265297
+
+% https://audi-encounter.com/en/Car-to-X
+
+% V2N - over-the-air upgrade (i.e. Tesla) is another essential feature
 
 \section{Goals}
+The overall goal of this thesis is to develop a prototype for a ``Pedestrian warning system'' which should inform vehicles about possible endangerment by proximate pedestrians. This prototype is composed of V2X communication platform, the EVK-3300 by Kapsch, which acts a road side unit (RSU), and an arbitrary amount of smartphones. Each smartphone is assumable carried by a pedestrian and has an application running in the background which transmits the current location to the closest RSU. Upon receiving the location the RSU determines whether the position is within a defined danger zone. If that is the case a ``pedestrian warning'' message is sent to the affected vehicles.
 
-[TODO Motivation]
+The prototype is exclusively developed for the EVK-3300 V2X Evaluation Kit by Kapsch, yet a port to a different V2X platform should be straightforward. Further, in the prototype's current state ``pedestrian warning'' messages are not transmitted, yet displayed on an intranet website running on the EVK-3300, visually showing the pedestrian's and vehicle's location on a map and their distance between each other, etc.
+% The Android application
 
-% The goal of this thesis is to describe the theoretical aspects of second-factor authentication, as well as its advantages and the increase of security by its usage. The theoretical background will be revisited and applied in the practical part, which is an implementation of a daemon that offers Bluetooth proximity detection. The daemon provides an open interface for 3rd-party applications to extend an authentication scheme to transform it into a twofactor authentication. Besides the daemon implementation, there are three clients provided. One client should be a Mozilla Firefox extension, which uses the daemon proximity detection in combination with the credential storage master password. The second client is a Linux PAM module, which increases the authentication security of the operation system’s login scheme. The third client is a Windows Desktop application that automatically locks
+The final result of this thesis covers, aside of a working prototype, also the theoretical aspects, which is compromised of a literature review and comparison with other existing (novel) systems, as well as the technical disambiguation to understand the required technologies for a ``Pedestrian warning system''.
 
-The final result of this thesis should cover the theoretical aspects and required technologies for ``Pedestrian warning system'', as well as provide a working prototype of said system.
+\newpage
 
-% The final result of the thesis should cover the aspects of Two-factor authentication, as well as provide a daemon and the three mentioned sample clients, which are using the interface of the daemon in order to establish a second-factor authentication.
+\section{Challenges}
+The challenges of providing a "Pedestrian warning system" are diverse and start from establishing a connection between the V2X platform and an arbitrary amount of smartphones, continuing with the power consumption for the persistent location inquiry and transmission.
+Further, the system has to be robust against the inconsistency, changing accuracy of the location data and handle the received information in a privacy conform manner, so a potential identification and traceability is subverted.
+
+\subsection{Connectivity}
+% - V2X is not a standard on mobile devices
+While the underlying wireless LAN (WLAN) technology of the V2X platform belong to IEEE 802.11 standard family, V2X itself has its own specification, namely 802.11\textbf{p}. However, the available WLAN standard protocols that are commonly included in smartphones are 802.11a/b/g/n/ac. Establishing a connection between the V2X device and smartphones is therefore due to incompatibility not a straightforward task. The difference lies in the frequency, bandwidth and modulation of the 802.11p standard and the standards at the smartphones' disposal.
+
+When comparing the 802.11 standards, it becomes apparent that 802.11a, a WLAN standard that is commonly available on smartphones, has the same x and y like 802.11p, only z differs. X et al. \cite{} are using this occurrence and modify the {x} of the Linux Kernel to overcome this communication obstacle. While it is a feasible approach it requires individual special hands-on modifications for each smartphone that has to connect.
+Therefore, the approach of this thesis is to add a WLAN access point to the V2X device, to bridge the communication obstacle, and offer a publicly available endpoint where each location data is send to.
+
+% - network congestion due to high density
+Another problem that might occur, specifically in urban areas, is the result when many smartphones are communicate with the road-side unit (RSU). Depending on the amount of connected devices a computational bottleneck could arise which then cause transmission delay of the warning messages.
+In order to circumvent this phenomena it is advised to put up more RSUs, arranged in cells, like it is common with cellular networks, to distribute the workload. Additionally, a prioritization mechanism for vehicles that are in imminent danger, i.e. their position is close to another pedestrian and/or are previously known to RSU should be implemented so they receive their vital ``pedestrian warning'' messages first.
+
+% -- cost of data transmission
+Further, while it is nowadays common that every smartphone is equipped with mobile internet connection, it is less common that the internet data quota is unlimited. It is not morally acceptable that an user has to pay, neither directly or indirectly in the way that it counts against his/her mobile data, for a security feature which is intended to increase safety.
+
+% -- availability of data transmission
+On another matter, even though it is a rare occurrence that there is no mobile reception, yet it could still happen in rural and suburban areas and should be taken care of. In cases like these, where and how should the information be sent? 
+
+\subsection{Power consumption}
+An integral part of the proposed ``Pedestrian warning system'' is the the continuous forwarding of location information by pedestrians. These location information are identified and sent via smart devices, i.e. smartphones that are commonly carried nowadays by pedestrians. In order to achieve this mentioned smartphones must have their ''location determination'' functionality constantly enabled, which queries the GPS position, as well have internet connection at all times, to send found position. The availability of those functions are less an issue nor challenge, since smartphones are more often than not equipped with the required hardware. However, the ``location determination'' functionality as well as the active internet connection %  may
+drain a non negligible amount of the smartphone's battery, which then would affect the pedestrian by minimizing the general time they can use their smartphone.
+
+% especially when the
+
+% - gps location servicces constanly enabled, drains power
+% - boradcasting data via mobile data/
+
+\subsection{Detection}
+The positional accuracy of the pedestrian location is an essential part for the intended safety advancement through the ``Pedestrian warning system''. The location is determined via the integrated GPS receiver of the pedestrians' smartphone. While ``[...] a GPS position fix is influenced by a number of factors, including ephemeris error, ionospheric and tropospheric delays, receiver noise, satellite geometry and multipath effects'' \cite{Zandbergen2011PositionalPhones}, the latter, multipath effects, is the most presumable challenge and jeopardizing occurrence in urban areas.
+Multipath effects are GPS ``signals that have been reflected from surrounding objects, such as buildings, trees, and even the ground''\cite{}
+% https://ieeexplore.ieee.org/document/5606130 (paper)
+. According to Kos et al \cite{}
+% https://ieeexplore.ieee.org/document/5606130 (paper)
+a technique to minimize those errors is to track only those satellites that are at least $15^{\circ}$ above the horizon, a so called ``mask angle''-threshold.
+
+In order to send trustworthy ``pedestrian warning'' messages a reliable pedestrian detection is necessary. Therefore it is crucial to minimize false-positive results and discard incorrect information.
+Circumstances like erroneous and discardable information as it is in the case when pedestrians are taking public transport and/or driving in vehicles themselves yet the background application on their smartphone is transmitting the location must be avoided, i.e. filtered.
+
+Similarly, it is beneficial for the detection mechanism to take positional context in consideration. While it is objectively correct to send a warning message when the pedestrian's distance towards a vehicle falls below a defined threshold, it should not be the sole deciding factor. The pedestrians position, whether the person is in front, next to or behind the vehicle is equally important.
+% For a proper detection the introduction of a ``dangerzone'', divided into different areas (safe, dangerous, critical), according to the current vehicle direction is recommended.
+
+Another significant challenge is the fact that not necessarily all pedestrians carry smart devices, like a smartphone or smartwatch, at all times. 
+% generally
+For instance elderly and young children are known to either not own or leave their devices at home. Whilst other individuals who usually carry their smartphone may decide occasionally do the same and disconnect from their devices due to personal choices, forgot it at home or their smartphone's battery run out. The outcome is that those individuals are ``ghosts'' since they are not seen or detected by the ``Pedestrian warning system'' and therefore not protected by it.
+% solution: simple connected wearables for elderly and children (without smartphone)
+
+\subsection{Security and Privacy}
+The foundation of the ``Pedestrian warning system'' lays in the forwarding and reception of location information. Considering the intimate characteristics of location information it is no surprise that privacy concerns and the question, which security precautions are set in place, arise. The ``Pedestrian warning system'' goal, the improvement of road safety and their users security should not be based on loss of privacy. An unsolicited abuse of the safety application, expressed either directly by identifying, surveilling or tracking the whereabouts of users or indirectly by attempting to influence and manipulate users' location or safety, must be avoided.
+
+Consequently, a secure connection must be established to handle sensitive data, like incoming location information.
+Further, it is advised to remove any identifying attributes (in impractical cases use obfuscation) from any data, protect it with encryption in order to assure its integrity and guard against malicious manipulation.
+Additionally, it must be ensured that the only authoritative entities are genuine road side units (RSUs) that are allowed to receive pedestrians' location information and send ``pedestrian warning'' messages to vehicles.
+
+% secure encrypted connection
+% encrypted (location) data
+% robust against manipulation (and identification/retrachable)
+% only available for use authorized RSU
+
+% CIA triad: 
+%     Protect the \textbf{confidentiality} of data
+%     Preserve the \textbf{integrity} of data
+%     Promote the \textbf{availability} of data for authorized use
 
 \section{Structure}
+What follows is a short description of each following chapter. The second chapter provides necessary technical background information and terminology disambiguation of the used and presented technologies.
 
-Chapter 2 provides the necessary technical background information and terminology disambiguation of the used and presented technologies. Chapter 3 presents the literature review of already existing and novel methods for the aimed system. Following, the chapter 4 shows the concept of the ``Pedestrian warning system'' prototype as well gives an insight of the used hardware, specifically the Kapsch EVK-3300. Chapter 5 introduces the technical details of implementation, such as the general approach and implementation architecture, subsequently followed by an in-depth overview of the pedestrian and roadside unit entities.
-Chapter number 6 provides an summary and future outlook for the implemented prototype.
+The literature review of already existing and novel methods for the aimed system is presented in chapter three, identifying and discussing the system's similarities and differences.
 
-% - Technical background
-% - Related Work
-% - Concept
-% - Implementation
-% (- Evaluation)
-% - Conclusion
+Following, the fourth chapter gives an insight of the used hardware, specifically the Kapsch EVK-3300. It contains all the information about how the system should be realized. It provides an overall look and its details, i.e. which information by the pedestrian are necessary and how the information exchange between the different devices are accomplished.
+ 
+The fifth chapter introduces the technical details of implementation, such as the general approach and implementation architecture, subsequently followed by an in-depth overview of the pedestrian and road side unit entities.
 
-% The next chapter Related Work presents the most common authentication solutions as a second factor such as the verification with physical devices, hardware and software token as well as the proximity authentication. It discusses the general and specific approach of the different verification techniques and demonstrates their typical operating place.
-
-% The Implementation chapter introduces the technical details such as the general approach and implementation architecture, subsequently followed by an in-depth overview of the components by the daemon and each implemented client.
-
-% Following this, the Results chapter analyses the overall results, as well as for the daemon and each implementation specifically the security enhancements using Bluetooth proximity.
-
-% A discussion will be presented in chapter 5, reflecting different views and aspects of the thesis while comparing it with other novel or existing solutions. The Conclusion chapter gives a summary and future outlook of Bluetooth Proximity as a second-factor authentication, followed by a Manual which explains the usage of the accompanying and created tools of this thesis.
+The final chapter six provides a summary and future outlook for the implemented prototype. It draws a conclusion of the work, describes the possibilities to extend it and which improvements the presented prototype would achieve on a daily basis.

@@ -1,10 +1,191 @@
 \chapter{Technical Background and Disambiguation}
-\label{cha:Implementation}
+\label{cha:Disambiguation}
+% [TODO] General info, introduction of chapter
 
-\section{Vehicle-to-everything communication(V2X)}
+\section{Intelligent Transportation Systems (ITS)}
+Intelligent Transportation Systems (ITS) apply information and communication technologies to vehicles, transportation infrastructure and its users aiming to provide services to enhance road safety, mobility and traffic efficiency. % goals
 
-\section{Intelligent Transportation System (ITS)}
+% .... 
 
-\section{Dedicated Short Range Communications (DSRC)}
 
-\section{IEEE 802.11p}
+% ...ITS not only for road vehicles
+Initially ITS have been only apparent in the road transport domain, yet began to appear in other domains such as in maritime and rail transport. % proof?
+This development lead to expansion of ITS original ``Fundamental services'' which have been defined in the international standard ISO 141813-1 in 1999. % citation
+With the most recent version (2016), ITS are now expected to address the following service domains:
+
+% service domains (where each holds different service groups)
+\begin{multicols}{2}
+    \begin{itemize}
+        \item Traveler information
+        \item Traffic management\\and operations
+        \item Vehicle services
+        \item Freight transport
+        \item Public transport
+        \item Emergency
+        \columnbreak
+        \item Transport-related electronic\\payment
+        \item Road transport-related\\personal safety
+        \item Weather and environmental\\conditions monitoring
+        \item Disaster response management\\and coordination
+        \item National security.
+    \end{itemize}
+\end{multicols}
+
+While ITS offer services to different domains, generally ITS services are about enhancing the driving experience. ITS can exist without intercommunication with other ITS or other vehicles, such as \textit{lane departure warning systems} and \textit{adaptive cruise control} that use technologies like video pattern recognition and radar to provide assistance to the driver.
+% Intelligent Transport Systems Standards by Bob Williams
+
+However, \textbf{Cooperative Intelligent Transportation Systems} (C-ITS) are the most promising technology to contribute to ``improving road safety by avoiding accidents and reducing their severity, to decreasing congestion, by optimising performance and available capacity of existing road transport infrastructure, to enhancing vehicle fleet management, by increasing travel time reliability and to reducing energy use and negative environmental impact''.
+% EU - Deployment and Operation of European Cooperative Intelligent Transport Systems (C-ITS)
+The emphasis of C-ITS lays on the term ``coperative'' which highlights the ability to communicate and share information with other vehicles and/or infrastructure, in order to increase their awareness about their surroundings.
+To achieve this a proper, standardized communication architecture is required. In Europe, the European Telecommunication Standards Institute (ETSI) administers this process based on advisements by the Car-2-Car (C2C) Communication Consortium\footnote{Website Car-2-Car Communication Consortium: \url{https://car-2-car.org/}}.
+The C2C consortium is compromised of leading vehicle manufacturers, equipment suppliers, research organizations and other partners who focus ``on creating standards ensuring the interoperability of cooperative systems spanning all vehicles classes, across borders and brands''\cite{}. % source flyer
+% [C-ITS future insertion ++++++]
+C-ITS and a successful standardization process are necessary for the future of automated vehicles and their integration into the global transport system.
+
+% explain why cooperative ITS are better than standlone ITS
+% exchanging real-time messages and sharing information about the perception 
+
+% transition and mention briefly the required communication architecture and technology
+% - art of communication (point-to-point)
+% - DSRC (V2X) or C-V2X
+
+
+% [C-ITS communication technologies]
+% Possibilities communication technologies:
+% - Dedicated Short-Range Communication (DSRC) - (Ad-hoc network in 5.9GHz Freq.) -> V2X
+%   European -> ETSI ?????? 
+%   DSRC is also known in Europe as ITS-G5  % https://www.etsi.org/deliver/etsi_en/302600_302699/302663/01.02.00_20/en_302663v010200a.pdf
+
+%   US -> WAVE (Wireless Access for Vehicular Environments)
+%   protocol stack has been add as amendment to IEEE 802.11 standard family as 802.11p
+%   formed network is called 'VANET' for Vehicular Adhoc Network
+% - Celluar V2X (C-V2X)
+%   LTE or in future 5G
+%       ETSI TS 122 185
+%       US ????
+% [more details explained in next section]
+
+
+
+
+% [ITS (pysical) Architecture -> ITS stations]
+% in the realm of Coop ITS standardization different stations established...
+ITS stations:
+    - Central (e.g. traffic operator, road operator, service or content provider)
+    - roadside (provides independently or cooperatively applications for central or other roadside ITS stations)
+    - vehicle (provides application for driver and/or passengers. may require access to vehicle system e.g. CAN)
+    - personal (provides application to personal and nomadic(?) devices)
+
+
+% examples (picture, description)
+
+
+ 
+% Domain       
+Active road safety
+    %   -> application
+    Driving assistance
+        % example I; example II
+        - cooperative awareness
+        - road hazard warnings
+Cooperative traffic efficiency
+    speed management
+        - regulatory/contextual speed limits notification
+        - traffic light optimal speed advisory
+    cooperative navigation
+Cooperative local services
+    Location-based services
+        - Point of interest (POI) notification
+        - automatic access control and parking management
+        (assoc. with POI)
+        - ITS local electronic commerce (mountain passing, highway toll etc.)
+        - Media downloading
+Global internet services
+    Communities services
+        - insurance and financial services
+        - fleet management
+        - loading zone management
+    ITS station life cycle management
+        - vehicle software/data provisioning/update
+        - ITS station data calibration
+
+
+% [ ITS messaging ]
+% ETSI defines 2 basic messaging services (also known as facilities) in communication stack of ITS application:
+    % coop. awareness basic service -> CAM
+    % coop. environmental basic service -> DENM
+% [more details explained in next section]
+
+
+% discard?
+% [DATA ACQUISITION]
+
+% ---------------------------------------------------------------------
+
+\section{Vehicle-to-everything (V2X) communication}
+% [TODO] 
+
+% Vehicular Communications (TS 102 637-1)
+% https://www.etsi.org/deliver/etsi_ts/102600_102699/10263701/01.01.01_60/ts_10263701v010101p.pdf
+% https://www.auto-talks.com/technology/dsrc-vs-c-v2x-2/
+% https://www.auto-talks.com/wp-content/uploads/2018/09/Global-V2X-DSRC-and-C-V2X-whitepaper.pdf
+
+% 
+
+% point-to-point: communication from an ITS station to another ITS station
+%    (includes point-to-point communication and session between the two ITS station)
+% point-to-multipoint: communication from an ITS station to multiple ITS stations. 
+
+% Vehicle to Infrastructure (V2I)
+
+% Vehicle to Vehicle (V2V)
+
+% Vehicle to Pedestrian (V2P)
+
+% Vehicle to Network (V2N) 
+
+\section{V2X Technologies}
+% Transport lvelv (OSI)
+% [TODO] about V2X Technologies (Wireless communication protocols)
+
+\subsection{Dedicated Short Range Communications (DSRC)}
+% V2X (basically) via 802.11p
+% Intelligent Transport Systems: Co-Operative Systems (Vehicular Communications)
+
+\subsection{Cellular-V2X (C-V2X)}
+% V2X via 5G
+
+% https://ec.europa.eu/transport/sites/transport/files/themes/its/doc/c-its-platform-final-report-january-2016.pdf
+% TS 122 185 (maybe more)
+
+% ---------------------------------------------------------------------
+
+\section{V2X Message Sets}
+% [TODO] General info, introduction to Message sets
+
+% https://www.sciencedirect.com/science/article/pii/S0968090X14001193
+% vgl. Chap. 2 - Background
+
+
+% Technical Limitations, and Privacy Shortcomings of the Vehicle-to-Vehicle Communication (Pdf on pc)
+\subsection{Cooperative Awareness Messages (CAM)}
+% ETSI EN 302 637-2
+% https://www.etsi.org/deliver/etsi_en/302600_302699/30263702/01.03.02_60/en_30263702v010302p.pdf
+
+% cam structure (it's containers and each field)
+% use cases, in which applications there used
+% generation time
+
+% CAM table
+
+CAM generation frequency: 100 - 1000 ms (or 1-10Hz)
+
+\subsection{Decentralized Environmental Notification Messages (DENM)}
+% ETSI EN 302 637-3
+% https://www.etsi.org/deliver/etsi_en/302600_302699/30263703/01.02.02_60/en_30263703v010202p.pdf
+
+% explain DENM structure....
+% its containers
+%   each field
+
+% DENM Table
